@@ -83,15 +83,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				e.preventDefault();
 				if (x < max_fields) { //max input box allowed
 					x++; //text box increment
-					$(wrapper).append('<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name"><span class="label-input100">NAME ' + x + ' *</span><input class="input100" type="text" name="name" placeholder="Enter Your Name"><a href="#" value="'+ x +'" class="remove_field"><i class="fa fa-close"></i> Remove</a></div>'); //add input box
-					$(wrapper_email).append('<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Email (e@a.x)"><span class="label-input100">Email '+ x + ' *</span><input class="input100 email'+ x +'" type="text" name="email" placeholder="Enter Your Email "></div>'); //add input box
+					$(wrapper).append('<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name"><span class="label-input100">NAME ' + x + ' *</span><input class="input100" type="text" name="name" placeholder="Enter Your Name"><a id="'+x+'" href="#" class="remove_field"><i class="fa fa-close"></i> Remove</a></div>'); //add input box
+					$(wrapper_email).append('<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Email (e@a.x)"><span class="label-input100">Email '+ x + ' *</span><input class="input100 email'+x+'" type="text" name="email" placeholder="Enter Your Email "></div>'); //add input box
 				}
 			});
 
 			$(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
 				e.preventDefault();
+				var current = $(this).attr('id');
+				alert(current);
 				$(this).parent('div').remove();
-				var current = $(this).val();
 				$(".email"+current).parent('div').remove();			
 				x--;
 			})
