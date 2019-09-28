@@ -76,6 +76,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			var max_fields = 5; //maximum input boxes allowed
 			var wrapper = $(".wrapper-name"); //Fields wrapper
 			var wrapper_email = $(".wrapper-email");
+			var wrapper_phone = $(".wrapper-phone");
 			var add_button = $(".add_field_button"); //Add button ID
 
 			var x = 1; //initlal text box count
@@ -83,17 +84,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				e.preventDefault();
 				if (x < max_fields) { //max input box allowed
 					x++; //text box increment
-					$(wrapper).append('<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name"><span class="label-input100">NAME ' + x + ' *</span><input class="input100" type="text" name="name" placeholder="Enter Your Name"><a id="'+x+'" href="#" class="remove_field"><i class="fa fa-close"></i> Remove</a></div>'); //add input box
-					$(wrapper_email).append('<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Email (e@a.x)"><span class="label-input100">Email '+ x + ' *</span><input class="input100 email'+x+'" type="text" name="email" placeholder="Enter Your Email "></div>'); //add input box
+					$(wrapper).append('<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name"><span class="label-input100">NAME ' + x + ' *</span><input class="input100" type="text" name="name" placeholder="Enter Your Name"><a id="' + x + '" href="#" class="remove_field"><i class="fa fa-close"></i> Remove</a></div>'); //add input box
+					$(wrapper_email).append('<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Email (e@a.x)"><span class="label-input100">Email ' + x + ' *</span><input class="input100 email' + x + '" type="text" name="email" placeholder="Enter Your Email "></div>'); //add input box
+					$(wrapper_phone).append('<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Phone Number"><span class="label-input100">Phone Number ' + x + ' *</span><input class="input100 phone' + x + '" type="text" name="phone" placeholder="Enter Your Phone Number "></div>'); //add input box
+				} else {
+					alert("You have added more than 5 friends !")
 				}
 			});
 
 			$(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
 				e.preventDefault();
 				var current = $(this).attr('id');
-				alert(current);
+				// alert(current);
 				$(this).parent('div').remove();
-				$(".email"+current).parent('div').remove();			
+				$(".email" + current).parent('div').remove();
+				$(".phone" + current).parent('div').remove();
 				x--;
 			})
 		});
@@ -172,58 +177,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</div>
 					</div>
 
+					<div class="wrapper-phone input100">
+						<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Phone Number">
+							<span class="label-input100">Phone Number *</span>
+							<input class="input100" type="text" name="phone" placeholder="Enter Number Phone">
+						</div>
+					</div>
+
 					<div class="wrap-input100 input100-select bg1">
-						<span class="label-input100">Needed Services *</span>
+						<span class="label-input100">Profession *</span>
 						<div>
 							<select class="js-select2" name="service">
 								<option>Please chooses</option>
-								<option>eCommerce Bussiness</option>
-								<option>UI/UX Design</option>
-								<option>Online Services</option>
+								<option>Pelajar</option>
+								<option>Mahasiswa</option>
+								<option>Umum</option>
 							</select>
 							<div class="dropDownSelect2"></div>
 						</div>
 					</div>
 
-					<div class="w-full dis-none js-show-service">
-						<div class="wrap-contact100-form-radio">
-							<span class="label-input100">What type of products do you sell?</span>
-
-							<div class="contact100-form-radio m-t-15">
-								<input class="input-radio100" id="radio1" type="radio" name="type-product" value="physical" checked="checked">
-								<label class="label-radio100" for="radio1">
-									Phycical Products
-								</label>
-							</div>
-
-							<div class="contact100-form-radio">
-								<input class="input-radio100" id="radio2" type="radio" name="type-product" value="digital">
-								<label class="label-radio100" for="radio2">
-									Digital Products
-								</label>
-							</div>
-
-							<div class="contact100-form-radio">
-								<input class="input-radio100" id="radio3" type="radio" name="type-product" value="service">
-								<label class="label-radio100" for="radio3">
-									Services Consulting
-								</label>
-							</div>
-						</div>
-
-						<div class="wrap-contact100-form-range">
-							<span class="label-input100">Budget *</span>
-
-							<div class="contact100-form-range-value">
-								$<span id="value-lower">610</span> - $<span id="value-upper">980</span>
-								<input type="text" name="from-value">
-								<input type="text" name="to-value">
-							</div>
-
-							<div class="contact100-form-range-bar">
-								<div id="filter-bar"></div>
-							</div>
-						</div>
+					<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Institution">
+						<span class="label-input100">Institution *</span>
+						<input class="input100" type="text" name="institusi" placeholder="Enter Your Institution">
 					</div>
 
 					<div class="container-contact100-form-btn">
