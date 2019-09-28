@@ -1,0 +1,293 @@
+#clockdiv{ 
+    font-family: sans-serif; 
+    color: #fff; 
+    display: inline-block; 
+    font-weight: 100; 
+    text-align: center; 
+    font-size: 30px; 
+} 
+#clockdiv > div{ 
+    padding: 10px; 
+    background: rgba(88, 94, 97, 0.24); 
+    display: inline-block; 
+} 
+#clockdiv div > span{ 
+    padding: 15px; 
+    display: inline-block; 
+} 
+
+.smalltext{ 
+    padding-top: 5px; 
+    font-size: 20px; 
+}
+
+.sub-title {
+    padding: 50px 0 0 0;
+}
+
+.image-logo {
+    width: 150px;
+}
+
+.subNavBtn:hover {
+    color:#F04E2C;
+}
+
+.services {
+    background : #ffffff;
+}
+
+.description {
+        padding: 5em 0;
+        background: #ffc527;
+}
+
+.timelines {
+        padding: 5em 0;
+}
+
+.syarat {
+    padding: 5em 0;
+    background: #288FCE;
+    color: #ffffff;
+}
+
+.fasilitas {
+    padding: 5em 0;
+    background: #F04E2C;
+    color: #ffffff;
+}
+
+.facility {
+    font-size: 30pt; 
+}
+
+.facility-text {
+    padding-top: 20px;
+}
+
+
+.sdgs {
+    padding: 5em 0;
+    background: #1f1f1f;
+    color: #ffffff;
+}
+
+.contact_right{
+	background: #ffffff;
+	padding:2em;
+}
+
+ul.contact_info span {
+    display: table-cell;
+    vertical-align: middle;
+    line-height: normal;
+    color: #35353f;
+    padding-left: 20px;
+    
+}
+
+.image-contest {
+    width: 200px;
+    padding: 50px 0 0 0;
+}
+
+h2.contest-head{
+	color: #373742;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 2em;
+	font-weight: bold;
+	margin-bottom: 2em;
+}
+
+.icon {
+    font-size: 25pt;
+}
+.contact_info :hover {
+    color: #F04E2C;
+}
+
+.icon a{
+    font-size: 12pt;
+}
+
+.contact-person h3{
+    text-transform: uppercase;
+   color: #ffffff;
+   font-family: inherit;
+   font-weight: bold;
+}
+
+.sdgs-image { 
+    width:1000px;
+}
+/* p.m_6{
+    color: #FFF;
+} */
+
+.contest-ex{
+    padding-top: 50px;
+}
+
+.m_5 a{
+    color: purple;
+}
+
+.req{
+    margin-left: 20px;
+}
+
+.FAQ {
+    padding: 7em 0 0 0;
+    background: #ffc527;
+}
+
+.FAQ-list {
+    font-size: 12pt;
+    padding: 0 6em 2em 3em;
+}
+
+.FAQ-answer li{
+    list-style: none;
+    border: #F04E2C solid 1px;
+    background-color: #ffc52754;
+    padding: 10px;
+}
+
+.FAQ-answer ol li {
+    border-radius: 10px;
+    list-style: lower-alpha;
+}
+
+.FAQ-group {
+    list-style: none;
+}
+
+.FAQ-group li span{
+	cursor: pointer;
+    width: 100%;
+    border: #ffc527 solid 1px;
+    background-color: #ffffff;
+    padding: 10px 20px;
+}
+
+.FAQ-title {
+    padding: 3em 6em 0em 5.5em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #F04E2C;
+}
+
+.FAQ-title h4 {
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+h3.m_1 a:hover {
+    color: #F04E2C;
+}
+
+ ul.timeline {
+      list-style-type: none;
+      position: relative;
+    }
+    ul.timeline:before {
+      content: ' ';
+      background: #d4d9df;
+      display: inline-block;
+      position: absolute;
+      left: 29px;
+      width: 2px;
+      height: 100%;
+      z-index: 400;
+    }
+    ul.timeline > li {
+      margin: 20px 0;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    ul.timeline > li:before {
+      content: ' ';
+      background: white;
+      display: inline-block;
+      position: absolute;
+      border-radius: 50%;
+      border: 3px solid #22c0e8;
+      left: 20px;
+      width: 20px;
+      height: 20px;
+      z-index: 400;
+    }
+
+    
+.sponsor {
+    padding: 5em 0;
+    background: #35353f;
+    color: #ffffff;
+}
+
+.sponsor-image {
+    padding: 15px;
+    width: 9em;
+    height: 9em;
+}
+
+
+
+
+
+@media(max-width:640px){ 
+
+	.FAQ-list {
+        font-size: 12pt;
+        padding: 0 1em 0 0px;
+    }
+
+    .FAQ-group {
+        padding: 0 0 0 10px;
+        margin-bottom: 30px;
+    }
+
+    .FAQ-answer li{
+        margin-left: -40px;
+        padding: 10px;
+    }
+
+    .FAQ-title {
+        padding: 2em 6em 0em 0.8em;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #F04E2C;
+    }
+
+    .FAQ-answer ol li {
+        margin-left: 0px;
+        border-radius: 0px;
+        border: none;
+        background: none;
+        list-style: lower-alpha;
+    }
+
+    .FAQ-answer ul li {
+    	margin: 0 0 0 -50px;
+    }
+
+    .sub-title {
+        padding: 20px 0 0 0;
+    }
+
+    #clockdiv div > span{ 
+        font-size: 14px; 
+    } 
+
+    #clockdiv > div{ 
+        padding: 5px; 
+    } 
+
+    .smalltext{ 
+        font-size: 14px; 
+    }
+
+    .sdgs-image { 
+        width:350px;
+    }
+}
