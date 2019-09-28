@@ -71,6 +71,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				'scrollSpeed': 1000
 			});
 		});
+
+		$(document).ready(function() {
+			var max_fields = 5; //maximum input boxes allowed
+			var wrapper = $(".wrapper-name"); //Fields wrapper
+			var wrapper_email = $(".wrapper-email");
+			var add_button = $(".add_field_button"); //Add button ID
+
+			var x = 1; //initlal text box count
+			$(add_button).click(function(e) { //on add input button click
+				e.preventDefault();
+				if (x < max_fields) { //max input box allowed
+					x++; //text box increment
+					$(wrapper).append('<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name"><span class="label-input100">NAME ' + x + ' *</span><input class="input100" type="text" name="name" placeholder="Enter Your Name"><a href="#" value="'+ x +'" class="remove_field"><i class="fa fa-close"></i> Remove</a></div>'); //add input box
+					$(wrapper_email).append('<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Email (e@a.x)"><span class="label-input100">Email '+ x + ' *</span><input class="input100 email'+ x +'" type="text" name="email" placeholder="Enter Your Email "></div>'); //add input box
+				}
+			});
+
+			$(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
+				e.preventDefault();
+				$(this).parent('div').remove();
+				var current = $(this).val();
+				$(".email"+current).parent('div').remove();			
+				x--;
+			})
+		});
 	</script>
 	<style>
 		.forform {
@@ -80,6 +105,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		.forforms {
 			font-family: 'Lato', Sans-Serif;
 			font-size: 16px;
+		}
+
+		.add_field_button {
+			font-size: 10px;
+		}
+
+		.remove_field {
+			color: red;
+			font-size: 10px;
 		}
 
 		@media (min-width: 992px) .container {
@@ -122,19 +156,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						Register
 					</span>
 
-					<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
-						<span class="label-input100">FULL NAME *</span>
-						<input class="input100" type="text" name="name" placeholder="Enter Your Name">
+					<div class="wrapper-name input100">
+						<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
+							<span class="label-input100">FULL NAME *</span>
+							<input class="input100" type="text" name="mytext[]" placeholder="Enter Your Name">
+							<button class="add_field_button"><i class="fa fa-plus"></i> Add More Friends</button>
+						</div>
 					</div>
 
-					<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate="Enter Your Email (e@a.x)">
-						<span class="label-input100">Email *</span>
-						<input class="input100" type="text" name="email" placeholder="Enter Your Email ">
-					</div>
-
-					<div class="wrap-input100 bg1 rs1-wrap-input100">
-						<span class="label-input100">Phone</span>
-						<input class="input100" type="text" name="phone" placeholder="Enter Number Phone">
+					<div class="wrapper-email input100">
+						<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Email (e@a.x)">
+							<span class="label-input100">Email *</span>
+							<input class="input100" type="text" name="email" placeholder="Enter Your Email ">
+						</div>
 					</div>
 
 					<div class="wrap-input100 input100-select bg1">
