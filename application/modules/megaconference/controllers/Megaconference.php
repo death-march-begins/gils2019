@@ -6,10 +6,15 @@
 
         function __construct() {
             parent::__construct();
+            $this->load->model('FormModel');
         }
 
         public function index(){
             $this->load->view('megaconference');
+        }
+
+        public function save() {
+            echo "tes";
         }
 
     }
