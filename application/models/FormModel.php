@@ -25,15 +25,21 @@
             $query=$this->db->query("select *from $table $where");
             return $query;
         }
-        function SelectQuery($sql)
-        {
-            $query=$this->db->query($sql);
-            return $query;
+        
+        public function getUser($id){
+            $query = $this->db->get_where('form_pendaftaran',array('id_form'=>$id));
+            return $query->row_array();
         }
+
         function insert($tabel,$data)
         {
-            $query=$this->db->insert($tabel, $data);
-            return $query;
+            $this->db->insert($tabel, $data);
+            return $this->db->insert_id();
+        }
+
+        function activate($data, $id) {
+            $this->db->where('form_pendaftaran.id_form', $id);
+		    return $this->db->update('form_pendaftaran', $data);
         }
     }
 ?>
