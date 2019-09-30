@@ -80,15 +80,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			var wrapper_email = $(".wrapper-email");
 			var wrapper_phone = $(".wrapper-phone");
 			var add_button = $(".add_field_button"); //Add button ID
+			
 
 			var x = 1; //initlal text box count
 			$(add_button).click(function(e) { //on add input button click
 				e.preventDefault();
 				if (x < max_fields) { //max input box allowed
 					x++; //text box increment
-					$(wrapper).append('<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name"><span class="label-input100">NAME ' + x + ' *</span><input class="input100" type="text" name="name" placeholder="Enter Your Name"><a id="' + x + '" href="#" class="remove_field"><i class="fa fa-close"></i> Remove</a></div>'); //add input box
-					$(wrapper_email).append('<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Email (e@a.x)"><span class="label-input100">Email ' + x + ' *</span><input class="input100 email' + x + '" type="text" name="email" placeholder="Enter Your Email "></div>'); //add input box
-					$(wrapper_phone).append('<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Phone Number"><span class="label-input100">Phone Number ' + x + ' *</span><input class="input100 phone' + x + '" type="text" name="phone" placeholder="Enter Your Phone Number "></div>'); //add input box
+					$(wrapper).append('<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name"><span class="label-input100">NAME ' + x + ' *</span><input class="input100" type="text" name="name[]" placeholder="Enter Your Name"><a id="' + x + '" href="#" class="remove_field"><i class="fa fa-close"></i> Remove</a>'); //add input box
+					$(wrapper_email).append('<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Email (e@a.x)"><span class="label-input100">Email ' + x + ' *</span><input class="input100 email' + x + '" type="email" name="email[]" placeholder="Enter Your Email "></div>'); //add input box
+					$(wrapper_phone).append('<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Phone Number"><span class="label-input100">Phone Number ' + x + ' *</span><input class="input100 phone' + x + '" type="text" name="phone[]" placeholder="Enter Your Phone Number "></div>'); //add input box
 				} else {
 					alert("You have added more than 5 friends !")
 				}
@@ -137,7 +138,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		<div class="container-contact100">
 			<div class="wrap-contact100">
-				<form class="contact100-form validate-form" name="form_pendaftaran" action="<?php echo base_url(). 'index.php/megaconference/save';?>" method="post" enctype="multipart/form-data">
+				<form class="contact100-form validate-form" name="form_pendaftaran" action="<?php echo base_url().'index.php/megaconference/save';?>" method="post" enctype="multipart/form-data">
 					<span class="contact100-form-title">
 						Register
 					</span>
@@ -154,7 +155,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="wrapper-email input100">
 						<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Email (e@a.x)">
 							<span class="label-input100">Email *</span>
-							<input class="input100" type="text" name="email[]" placeholder="Enter Your Email ">
+							<input class="input100" type="email" name="email[]" placeholder="Enter Your Email ">
 						</div>
 					</div>
 
@@ -168,7 +169,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="wrap-input100 input100-select bg1">
 						<span class="label-input100">Profession *</span>
 						<div>
-							<select class="js-select2" name="service">
+							<select name="profesi" class="js-select2" name="service">
 								<option>Please chooses</option>
 								<option>Pelajar</option>
 								<option>Mahasiswa</option>
@@ -184,7 +185,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 
 					<div class="container-contact100-form-btn">
-						<button class="contact100-form-btn">
+						<button type="submit" class="contact100-form-btn">
 							<span>
 								Submit
 								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
@@ -283,6 +284,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		gtag('config', 'UA-23581568-13');
 	</script>
+	
 
 </body>
 
