@@ -72,7 +72,7 @@
             $this->email->set_newline("\r\n");
             $this->email->from($config['smtp_user']);
             $this->email->to($email[0]);
-            $this->email->subject('Purchace Confirmation Email');
+            $this->email->subject('Purchase Confirmation Email');
             $this->email->message($message);
 
             if($this->email->send()){
