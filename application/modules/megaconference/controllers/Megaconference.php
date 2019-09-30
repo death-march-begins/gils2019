@@ -77,14 +77,14 @@
 
             if($this->email->send()){
                 $this->session->set_flashdata('message', "Send Email");
-                
+
 		    }
 		    else{
 		    	$this->session->set_flashdata('message', $this->email->print_debugger());
  
 		    }
              
-            // redirect('megaconference'); 
+            redirect('megaconference'); 
         }
 
 
