@@ -18,7 +18,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script src="<?php echo base_url() ?>asset/js/jquery.min.js"></script>
 	<!-- Custom Theme files -->
 	<link href="<?php echo base_url() ?>asset/css/style.css" rel='stylesheet' type='text/css' />
-	<link href="<?php echo base_url() ?>asset/css/custom.css" rel='stylesheet' type='text/css' />
+	
 
 	<!-- Custom Theme files -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,6 +62,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/form/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>asset/form/css/main.css">
 	<!--===============================================================================================-->
+
+	<link href="<?php echo base_url() ?>asset/css/custom.css" rel='stylesheet' type='text/css' />
 	<!----//requred-js-files---->
 	<script src="<?php echo base_url() ?>asset/js/easing.js"></script>
 	<script type="text/javascript" src="<?php echo base_url() ?>asset/js/jquery.smint.js"></script>
@@ -78,15 +80,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			var wrapper_email = $(".wrapper-email");
 			var wrapper_phone = $(".wrapper-phone");
 			var add_button = $(".add_field_button"); //Add button ID
+			
 
 			var x = 1; //initlal text box count
 			$(add_button).click(function(e) { //on add input button click
 				e.preventDefault();
 				if (x < max_fields) { //max input box allowed
 					x++; //text box increment
-					$(wrapper).append('<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name"><span class="label-input100">NAME ' + x + ' *</span><input class="input100" type="text" name="name" placeholder="Enter Your Name"><a id="' + x + '" href="#" class="remove_field"><i class="fa fa-close"></i> Remove</a></div>'); //add input box
-					$(wrapper_email).append('<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Email (e@a.x)"><span class="label-input100">Email ' + x + ' *</span><input class="input100 email' + x + '" type="text" name="email" placeholder="Enter Your Email "></div>'); //add input box
-					$(wrapper_phone).append('<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Phone Number"><span class="label-input100">Phone Number ' + x + ' *</span><input class="input100 phone' + x + '" type="text" name="phone" placeholder="Enter Your Phone Number "></div>'); //add input box
+					$(wrapper).append('<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name"><span class="label-input100">NAME ' + x + ' *</span><input class="input100" type="text" name="name[]" placeholder="Enter Your Name"><a id="' + x + '" href="#" class="remove_field"><i class="fa fa-close"></i> Remove</a>'); //add input box
+					$(wrapper_email).append('<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Email (e@a.x)"><span class="label-input100">Email ' + x + ' *</span><input class="input100 email' + x + '" type="email" name="email[]" placeholder="Enter Your Email "></div>'); //add input box
+					$(wrapper_phone).append('<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Phone Number"><span class="label-input100">Phone Number ' + x + ' *</span><input class="input100 phone' + x + '" type="text" name="phone[]" placeholder="Enter Your Phone Number "></div>'); //add input box
 				} else {
 					alert("You have added more than 5 friends !")
 				}
@@ -103,29 +106,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			})
 		});
 	</script>
-	<style>
-		.forform {
-			font-family: 'Lato', Sans-Serif;
-		}
-
-		.forforms {
-			font-family: 'Lato', Sans-Serif;
-			font-size: 16px;
-		}
-
-		.add_field_button {
-			font-size: 10px;
-		}
-
-		.remove_field {
-			color: red;
-			font-size: 10px;
-		}
-
-		@media (min-width: 992px) .container {
-			width: 970px;
-		}
-	</style>
+	
 </head>
 
 <body>
@@ -157,7 +138,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		<div class="container-contact100">
 			<div class="wrap-contact100">
-				<form class="contact100-form validate-form">
+				<form class="contact100-form validate-form" name="form_pendaftaran" action="<?php echo base_url().'index.php/megaconference/save';?>" method="post" enctype="multipart/form-data">
 					<span class="contact100-form-title">
 						Register
 					</span>
@@ -165,29 +146,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="wrapper-name input100">
 						<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
 							<span class="label-input100">FULL NAME *</span>
-							<input class="input100" type="text" name="mytext[]" placeholder="Enter Your Name">
+							<input class="input100" type="text" name="name[]" placeholder="Enter Your Name">
 							<button class="add_field_button"><i class="fa fa-plus"></i> Add More Friends</button>
 						</div>
 					</div>
+					
 
 					<div class="wrapper-email input100">
 						<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Email (e@a.x)">
 							<span class="label-input100">Email *</span>
-							<input class="input100" type="text" name="email" placeholder="Enter Your Email ">
+							<input class="input100" type="email" name="email[]" placeholder="Enter Your Email ">
 						</div>
 					</div>
 
 					<div class="wrapper-phone input100">
 						<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Phone Number">
 							<span class="label-input100">Phone Number *</span>
-							<input class="input100" type="text" name="phone" placeholder="Enter Number Phone">
+							<input class="input100" type="text" name="phone[]" placeholder="Enter Number Phone">
 						</div>
 					</div>
 
 					<div class="wrap-input100 input100-select bg1">
 						<span class="label-input100">Profession *</span>
 						<div>
-							<select class="js-select2" name="service">
+							<select name="profesi" class="js-select2" name="service">
 								<option>Please chooses</option>
 								<option>Pelajar</option>
 								<option>Mahasiswa</option>
@@ -203,7 +185,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 
 					<div class="container-contact100-form-btn">
-						<button class="contact100-form-btn">
+						<button type="submit" class="contact100-form-btn">
 							<span>
 								Submit
 								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
@@ -218,43 +200,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 
 	<div class="footer">
-		<div class="container formfooter">
+		<div class="container">
 			<div class="copy">
-				<p class="forforms">&copy; 2019 -<a class="forforms" href="http://w3layouts.com" target="_blank"> Inovator Nusantara</a></p>
+				<p>&copy; 2019 -<a href="#" target="_blank"> Inovator Nusantara</a></p>
 			</div>
 			<div class="clearfix"></div>
 		</div>
 	</div>
 	<script src="<?php echo base_url() ?>asset/js/bootstrap.min.js"></script>
-
-	<script>
-		var deadline = new Date("jun 29, 2019 15:37:25").getTime();
-
-		var x = setInterval(function() {
-
-			var now = new Date().getTime();
-			var t = deadline - now;
-			var days = Math.floor(t / (1000 * 60 * 60 * 24));
-			var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-			var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-			var seconds = Math.floor((t % (1000 * 60)) / 1000);
-			document.getElementById("day").innerHTML = days;
-			document.getElementById("hour").innerHTML = hours;
-			document.getElementById("minute").innerHTML = minutes;
-			document.getElementById("second").innerHTML = seconds;
-			document.getElementById("desc").innerHTML = "Waktu Pendaftaran Sebelum di Tutup";
-			document.getElementById("sub-desc").innerHTML = "Daftarkan Dirimu Segera";
-			if (t <= 0) {
-				clearInterval(x);
-				document.getElementById("desc").innerHTML = "Pendaftaran Telah di Tutup";
-				document.getElementById("sub-desc").innerHTML = "Selesai";
-				document.getElementById("day").innerHTML = '0';
-				document.getElementById("hour").innerHTML = '0';
-				document.getElementById("minute").innerHTML = '0';
-				document.getElementById("second").innerHTML = '0';
-			}
-		}, 1000);
-	</script>
 
 
 	<!--===============================================================================================-->
@@ -331,6 +284,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		gtag('config', 'UA-23581568-13');
 	</script>
+	
 
 </body>
 
