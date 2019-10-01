@@ -61,7 +61,7 @@
 						</head>
 						<body>
 							<h2>Thank you for Purchasing.</h2>
-							<p>Your Account:</p>
+							<p>".$nama[0]."</p>
 							<p>Please click the link below to confirm your purchasing.</p>
 							<h4><a href='".base_url()."megaconference/activate/".$id[0]."/".$lenght."/".$code."'>Activate My Account</a></h4>
 						</body>
@@ -74,17 +74,17 @@
             $this->email->to($email[0]);
             $this->email->subject('Purchase Confirmation Email');
             $this->email->message($message);
-
+            
             if($this->email->send()){
                 $this->session->set_flashdata('message', "Send Email");
-
+                redirect('asset/emailsendberhasil.html');
 		    }
 		    else{
 		    	$this->session->set_flashdata('message', $this->email->print_debugger());
- 
+                redirect('asset/emailsendgagal.html'); 
 		    }
              
-            redirect('megaconference'); 
+            
         }
 
 
@@ -93,13 +93,6 @@
             $lenght =  $this->uri->segment(4);
             $code = $this->uri->segment(5);
 
-            $this->load->library('email', $config);
-            $this->email->set_newline("\r\n");
-            $this->email->from($config['smtp_user']);
-            $this->email->to($email[0]);
-            $this->email->subject('Purchace Confirmation Email');
-            $this->email->message($message);
-     
             //fetch user details
             $id_cache = $id;
             $user = array();
@@ -122,17 +115,20 @@
                 }
                
                 if($query){
-                    echo "berhasil";
+                    // echo "berhasil";
 
-                    // $this->session->set_flashdata('message', 'User activated successfully');
+                    $this->session->set_flashdata('message', 'User activated successfully');
+                    redirect('asset/verifikasiemailsukses.html');
                 }
                 else{
                     $this->session->set_flashdata('message', 'Something went wrong in activating account');
+                    redirect('asset/verifikasiemailgagal.html');
                 }
             }
             else{
                 echo "gagal";
                 $this->session->set_flashdata('message', 'Cannot activate account. Code didnt match');
+                redirect('asset/verifikasiemailgagal.html');
             }
      
             // redirect('megaconference');
