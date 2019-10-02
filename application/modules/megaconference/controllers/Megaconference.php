@@ -28,7 +28,7 @@
                     redirect('asset/gagal.html');
                 } elseif ($email[$i] == "") {
                     redirect('asset/gagal.html');
-                } elseif ($No_Hp) {
+                } elseif ($No_Hp[$i] == "") {
                     redirect('asset/gagal.html');
                 }
             }
