@@ -60,10 +60,11 @@
 							<title>Verification Code</title>
 						</head>
 						<body>
-							<h2>Thank you for Purchasing.</h2>
-							<p>".$nama[0]."</p>
-							<p>Please click the link below to confirm your purchasing.</p>
-							<h4><a href='".base_url()."megaconference/activate/".$id[0]."/".$lenght."/".$code."'>Activate My Account</a></h4>
+							<h2>Terimakasih Telah Mendaftar</h2>
+							<h2>".$nama[0]."</h2>
+                            <p>Mohon Click link dibawah ini untuk melakukan konfirmasi pendaftran</p>
+                            <p>Konfirmasi hanya dilakukan kepada Email pertama yang diinputkan dan berlaku ke email lainnya</p>
+							<h4><a href='".base_url()."megaconference/activate/".$id[0]."/".$lenght."/".$code."'>Konfirmasi</a></h4>
 						</body>
 						</html>
                         ";
