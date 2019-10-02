@@ -138,7 +138,7 @@
 																	style="font-size: 12px; line-height: 1.2; font-family: prototype; color: #000000; mso-line-height-alt: 14px;">
 																	<p
 																		style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">
-																		<span style="font-size: 18px;">Halo Budi Gunawan,
+																		<span style="font-size: 18px;">Halo <?php echo $user[0]['Nama'] ?>,
 																		</span></p>
 
 																</div>
@@ -215,6 +215,13 @@
 										</div>
 									</div>
 
+									<?php
+									$total = 0;
+									 for ($i=0; $i<$lenght ; $i++) {
+									 $total += (int) $user[$i]['Bayar']; 
+									 
+									
+									?>
 
 									<div style="background-color:transparent;">
 										<div class="block-grid mixed-two-up"
@@ -234,8 +241,7 @@
 																	style="font-size: 12px; line-height: 1.2; font-family: 'Lato', Tahoma, Verdana, Segoe, sans-serif; color: #000000; mso-line-height-alt: 14px;">
 																	<p style="font-size: 14px; line-height: 1.2; mso-line-height-alt: 17px; margin: 0;">
 																		<span style="color: #000000; font-size: 14px;"><a
-																				style="text-decoration: none; color: #000000;" target="_blank">Budi
-																				Gunawan</a></span>
+																				style="text-decoration: none; color: #000000;" target="_blank"><?php echo $user[$i]['Nama']; ?></a></span>
 																	</p>
 																</div>
 															</div>
@@ -258,7 +264,7 @@
 																<div
 																	style="font-size: 12px; line-height: 1.2; font-family: 'Lato', Tahoma, Verdana, Segoe, sans-serif; color: #000000; mso-line-height-alt: 14px;">
 																	<p style="font-size: 14px; line-height: 1.2; mso-line-height-alt: 17px; margin: 0;">
-																		Rp25.000</p>
+																	Rp. <?php echo $user[$i]['Bayar']; ?></p>
 																</div>
 															</div>
 
@@ -270,6 +276,7 @@
 											</div>
 										</div>
 									</div>
+									<?php } ?>
 
 
 									<div style="background-color:transparent;">
@@ -313,67 +320,14 @@
 														<!--<![endif]-->
 													</div>
 												</div>
-												<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-												<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+											
 											</div>
 										</div>
 									</div>
 
-									<div style="background-color:transparent;">
-										<div class="block-grid mixed-two-up"
-											style="margin: 0 auto; min-width: 320px; max-width: 620px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: #FFFFFF;">
-											<div style="border-collapse: collapse;display: table;width: 100%;background-color:#FFFFFF;">
+									
 
-												<div class="col num8"
-													style="display: table-cell; vertical-align: top; min-width: 320px; max-width: 408px; width: 413px;">
-													<div style="width:100% !important;">
-														<!--[if (!mso)&(!IE)]><!-->
-														<div
-															style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
-															<!--<![endif]-->
-															<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top: 5px; padding-bottom: 5px; font-family: Tahoma, Verdana, sans-serif"><![endif]-->
-															<div
-																style="color:#000000;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;">
-																<div
-																	style="font-size: 12px; line-height: 1.2; font-family: 'Lato', Tahoma, Verdana, Segoe, sans-serif; color: red; mso-line-height-alt: 14px;">
-																	<p style="font-size: 14px; line-height: 1.2; mso-line-height-alt: 17px; margin: 0;">
-																		<strong>Diskon</strong><br /></p>
-																</div>
-															</div>
-															<!--[if mso]></td></tr></table><![endif]-->
-															<!--[if (!mso)&(!IE)]><!-->
-														</div>
-														<!--<![endif]-->
-													</div>
-												</div>
-
-												<div class="col num4"
-													style="display: table-cell; vertical-align: top; max-width: 320px; min-width: 204px; width: 206px;">
-													<div style="width:100% !important;">
-														<!--[if (!mso)&(!IE)]><!-->
-														<div
-															style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
-															<!--<![endif]-->
-															<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top: 5px; padding-bottom: 5px; font-family: Tahoma, Verdana, sans-serif"><![endif]-->
-															<div
-																style="color:#000000;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:0px;padding-right:20px;padding-bottom:0px;padding-left:20px;">
-																<div
-																	style="font-size: 12px; line-height: 1.2; font-family: 'Lato', Tahoma, Verdana, Segoe, sans-serif; color: red; mso-line-height-alt: 14px;">
-																	<p style="font-size: 14px; line-height: 1.2; mso-line-height-alt: 17px; margin: 0;">
-																		<strong>Rp0</strong></p>
-																</div>
-															</div>
-															<!--[if mso]></td></tr></table><![endif]-->
-															<!--[if (!mso)&(!IE)]><!-->
-														</div>
-														<!--<![endif]-->
-													</div>
-												</div>
-												<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-												<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
-											</div>
-										</div>
-									</div>
+												
 									<div style="background-color:transparent;">
 										<div class="block-grid"
 											style="Margin: 0 auto; min-width: 320px; max-width: 620px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;">
@@ -450,8 +404,6 @@
 												</div>
 
 
-												style="display: table-cell; vertical-align: top; max-width: 320px; min-width: 204px; width:
-												206px;">
 												<div style="width:100% !important;">
 													<!--[if (!mso)&(!IE)]><!-->
 													<div
@@ -460,10 +412,9 @@
 														<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 20px; padding-left: 20px; padding-top: 5px; padding-bottom: 5px; font-family: Tahoma, Verdana, sans-serif"><![endif]-->
 														<div
 															style="color:#000000;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:5px;padding-right:20px;padding-bottom:5px;padding-left:20px;">
-															<div
-																style="font-size: 12px; line-height: 1.2; font-family: 'Lato', Tahoma, Verdana, Segoe, sans-serif; color: #000000; mso-line-height-alt: 14px;">
+															<div style="font-size: 12px; line-height: 1.2; font-family: 'Lato', Tahoma, Verdana, Segoe, sans-serif; color: #000000; mso-line-height-alt: 14px;">
 																<p style="font-size: 14px; line-height: 1.2; mso-line-height-alt: 17px; margin: 0;">
-																	<strong>Rp50.000</strong></p>
+																	<strong>RP. <?php echo $total ?></strong></p>
 															</div>
 														</div>
 														<!--[if mso]></td></tr></table><![endif]-->
@@ -477,7 +428,7 @@
 										</div>
 									</div>
 					</div>
-					<div style="background-color:transparent;">
+					<div style="background-color:white;">
 						<div class="block-grid"
 							style="Margin: 0 auto; min-width: 320px; max-width: 620px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;">
 							<div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
@@ -523,8 +474,7 @@
 						</div>
 					</div>
 
-					<div
-						style="color:#71777D;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:0px;padding-left:10px;">
+					<div style="color:#71777D;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:0px;padding-left:10px;">
 						<div
 							style="font-size: 12px; line-height: 1.2; font-family: 'Lato', Tahoma, Verdana, Segoe, sans-serif; color: red; mso-line-height-alt: 14px;">
 							<p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">

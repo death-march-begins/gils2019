@@ -10,7 +10,8 @@
         }
 
         public function index(){
-            $this->load->view('megaconference');
+            $data['user'] = $this->FormModel->getJumlahPeserta();
+            $this->load->view('megaconference', $data);
         }
 
         public function save() {
@@ -20,23 +21,47 @@
             $profesi=$this->input->post('profesi');
             $institusi=$this->input->post('institusi');
 
+            $lenght = sizeof($nama);
+
+            for ($i=0; $i <$lenght ; $i++) { 
+                if ($nama[$i] == "") {
+                    redirect('asset/gagal.html');
+                } elseif ($email[$i] == "") {
+                    redirect('asset/gagal.html');
+                } elseif ($No_Hp) {
+                    redirect('asset/gagal.html');
+                }
+            }
+            
+
             // set random code
             $set = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $code = substr(str_shuffle($set), 0, 12);
             
             $config = array(
                 'protocol' => 'smtp',
-                'smtp_host' => 'ssl://smtp.googlemail.com',
+                'smtp_host' => 'ssl://srv68.niagahoster.com',
                 'smtp_port' => 465,
-                'smtp_user' => 'andikalfahri@gmail.com', // change it to yours
-                'smtp_pass' => 'andika123', // change it to yours
+                'smtp_user' => 'gils2019@inovatornusantara.org', // change it to yours
+                'smtp_pass' => 'gils2019', // change it to yours
                 'mailtype' => 'html',
                 'charset' => 'iso-8859-1',
                 'wordwrap' => TRUE
           );
 
-            $lenght = sizeof($nama);
+            
             $data=array();
+
+            $harga = 40000;
+
+            if ($profesi == "Umum") {
+                $harga = 45000;
+            } 
+
+            if ($lenght == 5) {
+                $harga-=2000;
+            }
+
             for ($i=0; $i <$lenght ; $i++) { 
                 $data[$i] = array(
                     'Nama' => $nama[$i],
@@ -45,12 +70,13 @@
                     'Profesi' => $profesi,
                     'Institusi' => $institusi,
                     'Code' => $code,
-                    'Active' => false
+                    'Active' => false,
+                    'Bayar' => $harga,
                 );
             }
 
             $id = array();
-            for ($i=0; $i <$lenght ; $i++) { 
+            for ($i=0; $i <$lenght ; $i++) {
                 $id[$i] = $this->FormModel->insert("form_pendaftaran", $data[$i]);
             }
 
@@ -101,31 +127,72 @@
                 $user[$i] = $this->FormModel->getUser($id_cache);
                 $id_cache+=1;
             }
-     
-            //if code   
-            if($user[0]['Code'] == $code){
+
+            if ($user[0]['Active'] == 1) {
+                redirect('asset/emailsudahaktif.html');
+            }
+            
+            elseif ($user[0]['Code'] == $code){
                 //update user active status
+
+                $config = array(
+                    'protocol' => 'smtp',
+                    'smtp_host' => 'ssl://srv68.niagahoster.com',
+                    'smtp_port' => 465,
+                    'smtp_user' => 'gils2019@inovatornusantara.org', // change it to yours
+                    'smtp_pass' => 'gils2019', // change it to yours
+                    'mailtype' => 'html',
+                    'charset' => 'iso-8859-1',
+                    'wordwrap' => TRUE
+              );
+
+               
                 $data =array (
                     'Active' => true 
                 );
 
                 $id_cache = $id;
                 for ($i=0; $i <$lenght ; $i++) { 
+                    $peserta = $this->FormModel->getJumlahPeserta();
+
+                    if ($peserta <= 50) {
+                        $user[$i]['Bayar'] = (int) $user[$i]['Bayar'] - (int) ( $user[$i]['Bayar'] * (20/100) );
+                        $data['Bayar'] = $user[$i]['Bayar'];
+                    } else {
+                        $data['Bayar'] = $user[$i]['Bayar'];
+                    }
+
                     $query = $this->FormModel->activate( $data, $id_cache);
                     $id_cache+=1;
                 }
-               
+
                 if($query){
                     // echo "berhasil";
+                    $datahtml['user'] = $user; 
+                    $datahtml['lenght'] = $lenght;
 
-                    $this->session->set_flashdata('message', 'User activated successfully');
-                    redirect('asset/verifikasiemailsukses.html');
+                    $message =  $this->load->view('verifikasiemailinfo', $datahtml , true);
+
+                        $this->load->library('email', $config);
+                        $this->email->set_newline("\r\n");
+                        $this->email->from($config['smtp_user']);
+                        $this->email->to($user[0]['Email']);
+                        $this->email->subject('INFORMASI PEMBAYARAN TIKET MEGACONFERENCE GILS 2019');
+                        $this->email->message($message);
+
+                        if ($this->email->send()) { 
+                            redirect('asset/verifikasiemailsukses.html');
+                        } else {
+                            echo "Email Gagal Dikirim Mohon Hubungi Kontak : +62 812-4981-2473 (Mayang)
+                            +62 813-2776-3552 (Novi)";
+                        }
+                    
                 }
                 else{
                     $this->session->set_flashdata('message', 'Something went wrong in activating account');
                     redirect('asset/verifikasiemailgagal.html');
                 }
-            }
+            } 
             else{
                 echo "gagal";
                 $this->session->set_flashdata('message', 'Cannot activate account. Code didnt match');
