@@ -105,6 +105,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				x--;
 			})
 		});
+
+		
 	</script>
 	
 </head>
@@ -140,37 +142,53 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="wrap-contact100">
 				<form class="contact100-form validate-form" name="form_pendaftaran" action="<?php echo base_url().'index.php/megaconference/save';?>" method="post" enctype="multipart/form-data">
 					<span class="contact100-form-title">
-						Register
+						Registerasi Megaconference
 					</span>
 
+					<ul style ="margin:0 0 30px; 0">
+						<li><span> Diskon 20% Untuk 50 Pendaftar Pertama</span></li>
+						<li><span> Diskon 2k/Tiket Untuk 5 Pembelian</span>	</li>
+						<li class="hidden"><span> Total Pendaftar Saat ini : <?php echo $user ?> </span></li>
+					</ul>
+
+					
 					<div class="wrapper-name input100">
+					<span> * Tekan Tambah untuk menambah Slot</span>
 						<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
 							<span class="label-input100">FULL NAME *</span>
 							<input class="input100" type="text" name="name[]" placeholder="Enter Your Name">
 							<button class="add_field_button"><i class="fa fa-plus"></i> Add More Friends</button>
 						</div>
 					</div>
+
+					
 					
 
 					<div class="wrapper-email input100">
+					<span> *Mohon mengisi email yang valid</span>
 						<div class="wrap-input100 validate-input bg1" data-validate="Enter Your Email (e@a.x)">
 							<span class="label-input100">Email *</span>
 							<input class="input100" type="email" name="email[]" placeholder="Enter Your Email ">
 						</div>
 					</div>
 
+					
+					
+
 					<div class="wrapper-phone input100">
+					<span> *Mohon mengisi Nomor Hp yang dapat dihubungi</span>
 						<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Phone Number">
 							<span class="label-input100">Phone Number *</span>
-							<input class="input100" type="text" name="phone[]" placeholder="Enter Number Phone">
+							<input class="input100" type="text" name="phone[]" placeholder="Ex : +628xxxxxxxxxxx">
 						</div>
 					</div>
+
+					
 
 					<div class="wrap-input100 input100-select bg1">
 						<span class="label-input100">Profession *</span>
 						<div>
 							<select name="profesi" class="js-select2" name="service">
-								<option>Please chooses</option>
 								<option>Pelajar</option>
 								<option>Mahasiswa</option>
 								<option>Umum</option>

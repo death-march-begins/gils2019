@@ -31,6 +31,13 @@
             return $query->row_array();
         }
 
+        public function getJumlahPeserta() {
+
+            $query = $this->db->query("SELECT * FROM form_pendaftaran WHERE Active = '1'");
+            return $query->num_rows();
+
+        }
+
         function insert($tabel,$data)
         {
             $this->db->insert($tabel, $data);
